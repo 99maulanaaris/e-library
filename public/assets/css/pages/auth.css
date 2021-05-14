@@ -1,0 +1,40 @@
+body {
+    background-color: #fff;
+}
+#auth {
+    height: 100vh;
+    overflow-x: hidden;
+}
+#auth #auth-right {
+    height: 100%;
+}
+#auth #auth-left {
+    padding: 5rem 8rem;
+    margin-left: 250px;
+}
+#auth-left {
+    margin-right: -350px;
+}
+#auth #auth-left .auth-title {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+#auth #auth-left .auth-subtitle {
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    color: #a8aebb;
+}
+.auth-logo {
+    margin-bottom: -150px;
+}
+#auth #auth-left .auth-logo {
+    margin-bottom: 7rem;
+}
+#auth #auth-left .auth-logo img {
+    height: 150px;
+}
+@media screen and (max-width: 767px) {
+    #auth #auth-left {
+        padding: 5rem;
+    }
+}
