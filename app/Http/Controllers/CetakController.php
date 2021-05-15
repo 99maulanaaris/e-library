@@ -32,4 +32,20 @@ class CetakController extends Controller
         $pdf = PDF::loadview('Cetak.cetakpdf', compact('data', 'tanggal'))->setPaper('A4', 'landscape');
         return $pdf->download('Laporan.pdf');
     }
+
+    public function userPdf($id)
+    {
+        $data = History::where('user_id', auth()->user()->id);
+
+        $pdf = PDF::loadview('Cetak.cetakUserPdf', compact('data'))->setPaper('A4', 'portrait');
+        return $pdf->stream();
+    }
+
+    public function downloadUser()
+    {
+        $data = History::where('user_id', auth()->user()->id);
+
+        $pdf = PDF::loadview('Cetak.cetakUserPdf', compact('data'))->setPaper('A4', 'portrait');
+        return $pdf->download();
+    }
 }

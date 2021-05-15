@@ -11,6 +11,6 @@ class LogoutController extends Controller
     public function __invoke()
     {
         Auth::logout();
-        return redirect(route('login'))->with('success', 'Selamat Datang Kembali');
+        return redirect(route('login'))->with('alertSuccess', 'Selamat Datang Kembali');
     }
 }

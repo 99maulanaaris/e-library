@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
         Route::get('', [UserController::class, 'index'])->name('show.user');
         Route::get('/buku', [UserController::class, 'showBuku'])->name('user.book');
         Route::post('buku/{id}', [UserController::class, 'store']);
+        Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
+        Route::patch('profile/{id}', [UserController::class, 'update']);
     });
 
     Route::prefix('checkout')->group(function () {

@@ -30,6 +30,8 @@
 
     </div>
 </body>
+<script src={{ asset('assets/js/bootstrap.bundle.min.js') }}></script>
+<script src={{ asset('assets/js/main.js') }}></script>
 
 </html>
 {{-- <div id="auth-left">

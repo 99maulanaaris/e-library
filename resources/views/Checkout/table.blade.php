@@ -33,24 +33,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($data as $d)
-                            <tr>
-                                <td>{{ $d->loan->book->judul }}</td>
-                                <td>{{ $d->loan->formatPinjam($d->loan->pinjam) }}</td>
-                                <td>{{ $d->loan->formatKembali($d->loan->kembali) }}</td>
-                                <td>{{ $d->tglKembali }}</td>
-                                @if ($d->konfirmasi === 0)
-                                    <td>
-                                        <span class="badge bg-danger">Belum Konfirmasi</span>
-                                    </td>
-                                @else
-                                    <td>
-                                        <span class="badge bg-light-success">Terkonfirmasi</span>
-                                    </td>
-                                @endif
+                        @if ($data->count() != 0)
+                            @foreach ($data as $d)
+                                <tr>
+                                    <td>{{ $d->loan->book->judul }}</td>
+                                    <td>{{ $d->loan->formatPinjam($d->loan->pinjam) }}</td>
+                                    <td>{{ $d->loan->formatKembali($d->loan->kembali) }}</td>
+                                    <td>{{ $d->tglKembali }}</td>
+                                    @if ($d->konfirmasi === 0)
+                                        <td>
+                                            <span class="badge bg-danger">Belum Konfirmasi</span>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <span class="badge bg-light-success">Terkonfirmasi</span>
+                                        </td>
+                                    @endif
 
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="6"><span class="badge bg-info text-center">Maaf Data Anda Kosong</span></td>
                             </tr>
-                        @endforeach
+                        @endif
 
 
                     </tbody>

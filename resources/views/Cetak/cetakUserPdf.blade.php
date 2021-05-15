@@ -1,8 +1,8 @@
 @extends('Layouts.print')
 
 @section('content')
-    <div class="row col-md-12">
-        <table class='table text-center'>
+    <div class="row">
+        <table class='table table-lg text-center'>
             <thead>
                 <tr>
                     <th>No</th>
@@ -33,5 +33,4 @@
             </tbody>
         </table>
     </div>
-
 @endsection

@@ -24,10 +24,10 @@ class LoginController extends Controller
                 Auth::login($user);
                 return redirect()->intended('/');
             } else {
-                return back()->with('error', 'Password Anda Salah');
+                return back()->with('alertError', 'Password Anda Salah');
             }
         } else {
-            return back()->with('error', 'Email Anda Salah');
+            return back()->with('alertError', 'Email Anda Salah');
         }
     }
 
