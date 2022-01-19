@@ -36,31 +36,33 @@
                     <tbody>
                         @if ($returns->count() != 0)
                             @foreach ($returns as $return)
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $return->loan->book->judul }}</td>
-                                <td>{{ $return->user->nama }}</td>
-                                <td>{{ $return->user->noHp }}</td>
-                                @if ($return->konfirmasi === 0)
-                                    <td>
-                                        <span class="badge bg-light-danger">Belum Konfirmasi</span>
-                                    </td>
-                                @else
-                                    <td>
-                                        <span class="badge bg-light-success">Terkonfirmasi</span>
-                                    </td>
-                                @endif
-                                @if ($return->konfirmasi === 1)
-                                    <td><span class="badge bg-info">Telah Konfirmasi</span></td>
-                                @else
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $return->loan->book->judul }}</td>
+                                    <td>{{ $return->user->nama }}</td>
+                                    <td>{{ $return->user->noHp }}</td>
+                                    @if ($tanggal > $return->loan->kembali)
+                                        <td>
+                                            <span class="badge bg-light-danger">Telat</span>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <span class="badge bg-light-success">Aktif</span>
+                                        </td>
+                                    @endif
+                                    @if ($return->konfirmasi === 1)
+                                        <td><span class="badge bg-info">Telah Konfirmasi</span></td>
+                                    @else
 
-                                    <td>
-                                        <form action="/checkout/kembali/{{ $return->id }}" method="POST">
-                                            @csrf
-                                            @method('put')
-                                            <button type="submit" class="badge bg-light-info">Konfirmasi</button>
-                                        </form>
-                                    </td>
-                                @endif
+                                        <td>
+                                            <form action="/checkout/kembali/{{ $return->id }}" method="POST">
+                                                @csrf
+                                                @method('put')
+                                                <button type="submit" class="badge bg-light-info">Konfirmasi</button>
+                                            </form>
+                                        </td>
+                                    @endif
+                                </tr>
                             @endforeach
 
                         @else

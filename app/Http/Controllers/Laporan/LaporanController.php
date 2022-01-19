@@ -21,7 +21,8 @@ class LaporanController extends Controller
     public function pengembalian()
     {
         $returns = ReturnBook::get();
-        return view('Laporan.pengembalian', compact('returns'));
+        $tanggal = Carbon::today();
+        return view('Laporan.pengembalian', compact('returns', 'tanggal'));
     }
 
     public function userLaporan()

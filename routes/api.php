@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('user', [UserController::class, 'fetch']);
+    Route::post('user', [UserController::class, 'updateProfile']);
+    Route::post('user/photo', [UserController::class, 'uploadPhoto']);
+    Route::post('logout', [UserController::class, 'logout']);
+    Route::post('loan', [UserController::class, 'pinjamBuku']);
+    Route::post('checkout', [UserController::class, 'kembali']);
+    Route::get('check', [UserController::class, 'returnBook']);
+    Route::get('telat', [UserController::class, 'telat']);
+    Route::get('check-return', [UserController::class, 'jumlahKembali']);
+    Route::get('check-pinjam', [UserController::class, 'jumlahPinjaman']);
+    Route::get('loan', [UserController::class, 'pinjaman']);
 });
+
+Route::post('login', [UserController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::get('book', [UserController::class, 'fetchBook']);

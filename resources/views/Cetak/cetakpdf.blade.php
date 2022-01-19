@@ -23,7 +23,7 @@
                         <td>{{ $d->formatPinjam($d->tglPinjam) }}</td>
                         <td>{{ $d->formatBatasWaktu($d->batasWaktu) }}</td>
                         <td>{{ $d->formatKembali($d->tglKembali) }}</td>
-                        @if ($tanggal > $d->batasWaktu)
+                        @if ($d->tglKembali > $d->tglPinjam)
                             <td class="text-bold">Telat</td>
                         @else
                             <td class="text-bold">Tidak</td>
