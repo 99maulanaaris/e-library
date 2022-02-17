@@ -151,13 +151,16 @@ class UserController extends Controller
             'kembali' => $expire->addDays(7),
             'user_id' => auth()->user()->id
         ]);
-
+        $book = Book::where('id', $request->bookId)->first();
+        $book->stock = $book->stock - 1;
+        $book->update();
         return ResponseFormatter::success($loan, 'Berhasil Pinjam Buku');
     }
 
     public function kembali(Request $request)
     {
         $return = ReturnBook::create([
+            'book_id' => $request->bookId,
             'loan_id' => $request->id,
             'tglKembali' => Carbon::now(),
             'user_id' => auth()->user()->id,
@@ -168,7 +171,7 @@ class UserController extends Controller
 
     public function returnBook(Request $request)
     {
-        $data = ReturnBook::where('user_id', auth()->user()->id)->get();
+        $data = ReturnBook::where('user_id', auth()->user()->id)->with(['book'])->get();
 
         return ResponseFormatter::success($data, 'Data Berhasil Diambil');
     }

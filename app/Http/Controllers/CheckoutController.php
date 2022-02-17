@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\History;
 use App\Models\Loan;
 use App\Models\ReturnBook;
@@ -43,6 +44,9 @@ class CheckoutController extends Controller
                 'konfirmasi' => 1
             ]);
 
+            $book = Book::where('id', $return->loan->book_id)->first();
+            $book->stock = $book->stock + 1;
+            $book->update();
             if ($history) {
                 $data = Loan::find($return->loan_id);
                 $data->delete();

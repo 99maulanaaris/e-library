@@ -23,6 +23,11 @@ class ReturnBook extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function book()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function formatKembali($key)
     {
         return Carbon::parse($this->attributes['kembali'])->translatedFormat('l, d F Y');

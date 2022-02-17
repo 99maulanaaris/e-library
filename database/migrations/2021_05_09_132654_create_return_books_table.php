@@ -17,6 +17,7 @@ class CreateReturnBooksTable extends Migration
             $table->id();
             $table->foreignId('loan_id');
             $table->foreignId('user_id');
+            $table->foreignId('book_id');
             $table->date('tglKembali');
             $table->boolean('konfirmasi')->default(0);
             $table->timestamps();

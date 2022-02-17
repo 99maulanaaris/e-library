@@ -21,6 +21,7 @@ class CreateBooksTable extends Migration
             $table->string('penulis');
             $table->string('penerbit');
             $table->string('tebalHalaman');
+            $table->integer('stock')->default(1);
             $table->timestamps();
         });
     }
